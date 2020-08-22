@@ -13,7 +13,7 @@ abstract class RunnableTask(arguments: String) extends Runnable {
     /** Run the task within an ad-hoc Play application, and shut it down when finished. */
     def run(): Unit = {
         val env = Environment(new java.io.File("."), this.getClass.getClassLoader, Mode.Dev)
-        val context = ApplicationLoader.createContext(env)
+        val context = ApplicationLoader.Context.create(env)
         val loader = ApplicationLoader(context)
         val app = loader.load(context)
         try { this.execute(app) } finally { Play.stop(app) }

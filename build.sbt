@@ -1,6 +1,6 @@
 lazy val commonSettings = Seq(
     organization := "com.jaroop",
-    version := "2.0.0",
+    version := "3.0.0",
     resolvers ++= Seq("snapshots", "releases").map(Resolver.sonatypeRepo),
     resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
     publishTo := sonatypePublishTo.value,
@@ -36,9 +36,9 @@ lazy val root = (project in file("."))
   .settings(commonSettings: _*)
   .settings(
     name := "play-sbt-tasks",
-    scalaVersion := "2.12.8",
-    crossScalaVersions := Seq("2.11.12", "2.12.8"),
-    libraryDependencies += "com.typesafe.play" %% "play" % "2.6.+"
+    scalaVersion := "2.13.3",
+    crossScalaVersions := Seq("2.12.12", "2.13.3"),
+    libraryDependencies += "com.typesafe.play" %% "play" % "2.7.5"
   )
 
 lazy val plugin = (project in file("plugin"))
@@ -46,7 +46,7 @@ lazy val plugin = (project in file("plugin"))
   .settings(commonSettings: _*)
   .settings(
     name := "play-sbt-tasks-plugin",
-    scalaVersion := "2.12.8",
+    scalaVersion := "2.12.12",
   )
 
 scalacOptions ++= Seq(
@@ -55,10 +55,4 @@ scalacOptions ++= Seq(
     "-explaintypes",                     // Explain type errors in more detail.
     "-feature",                          // Emit warning and location for usages of features that should be imported explicitly.
     "-unchecked",                        // Enable additional warnings where generated code depends on assumptions.
-    "-Ywarn-inaccessible",               // Warn about inaccessible types in method signatures.
-    "-Ywarn-infer-any",                  // Warn when a type argument is inferred to be `Any`.
-    "-Ywarn-nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
-    "-Ywarn-nullary-unit",               // Warn when nullary methods return Unit.
-    "-Ywarn-numeric-widen",              // Warn when numerics are widened.
-    "-Ywarn-value-discard"               // Warn when non-Unit expression results are unused.
 )
